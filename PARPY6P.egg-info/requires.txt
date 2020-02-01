@@ -1,4 +1,0 @@
-numpy
-meshio
-mpi4py
-metis

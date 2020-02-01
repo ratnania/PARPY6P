@@ -1,0 +1,12 @@
+README.md
+setup.py
+PARPY6P/__init__.py
+PARPY6P/version.py
+PARPY6P.egg-info/PKG-INFO
+PARPY6P.egg-info/SOURCES.txt
+PARPY6P.egg-info/dependency_links.txt
+PARPY6P.egg-info/requires.txt
+PARPY6P.egg-info/top_level.txt
+PARPY6P/meshpart/LocalStructure.py
+PARPY6P/meshpart/MeshPartitioning.py
+PARPY6P/meshpart/__init__.py

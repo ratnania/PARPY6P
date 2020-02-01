@@ -13,7 +13,7 @@ exec(path.read_text())
 NAME    = 'PARPY6P'
 VERSION = __version__
 AUTHOR  = 'Imad Kissami'
-EMAIL   = 'imad.kissami@gmail.ma'
+EMAIL   = 'imad.kissami@gmail.com'
 URL     = 'https://github.com/imadki/PARPY6P'
 DESCR   = 'Python extension language using accelerators.'
 KEYWORDS = ['math']

@@ -416,30 +416,6 @@ def save_paraview_results(w, n, dt, rank, cells, nodes):
                 	text_file.write("<Piece Source=\""+str(name1)+"\"/>\n")                    
                 text_file.write("</PUnstructuredGrid>\n") 
                 text_file.write("</VTKFile>")
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         
         

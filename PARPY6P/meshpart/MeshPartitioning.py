@@ -6,7 +6,6 @@ import os
 import timeit
 from collections import OrderedDict
 
-
 __all__ = ['MeshPart']
 
 def MeshPart(size, filename):
@@ -23,6 +22,7 @@ def SeqMesh(filename):
     def create_cell_nodeid(mesh):
         cell_nodeid = []
     
+
         for i,j in mesh.cells.items():
             if i == "triangle":
                 for k in range(len(j)):
@@ -32,17 +32,29 @@ def SeqMesh(filename):
     
     def define_ghost_node(mesh, nodes):
          ghost_nodes = [0]*len(nodes)
-         x = []
+         
          for i,j in mesh.cell_data.items():
             if i=="line":
                 x = j.get('gmsh:physical')
+        
+         #print(x)
         
          for i,j in mesh.cells.items():
             if i == "line":
                 for k in range(len(j)):
                     for l in range(2):
-                        ghost_nodes[j[k][l]] = x[k]
-          
+                        if x[k] > 2:
+                            ghost_nodes[j[k][l]] = x[k]
+         for i,j in mesh.cells.items():
+             if i == "line":
+                 for k in range(len(j)):
+                     for l in range(2):
+                         if x[k] <= 2:
+                             ghost_nodes[j[k][l]] = x[k]
+         
+#         for i in range(len(ghost_nodes)):
+#             if ghost_nodes[i] !=0 :
+#                 print(ghost_nodes[i])
     #                
          return ghost_nodes
     
@@ -63,6 +75,9 @@ def SeqMesh(filename):
     #nodes of each cell
     cell_nodeid = create_cell_nodeid(mesh)
     
+    ghost_nodes =  define_ghost_node(mesh, nodes)
+    
+    
     if os.path.exists("mesh"+str(0)+".txt"):
         os.remove("mesh"+str(0)+".txt")
         #else:
@@ -76,7 +91,11 @@ def SeqMesh(filename):
 
     with open("mesh"+str(0)+".txt", "a") as text_file:
         text_file.write("Nodes\n")
-        np.savetxt(text_file, nodes)#, fmt='%u')
+        for i in range(len(nodes)):
+            for j in range(3):
+                text_file.write(str(nodes[i][j])+str(" "))
+            text_file.write(str(ghost_nodes[i]))
+            text_file.write("\n")#, fmt='%u')
         text_file.write("EndNodes\n")
       
 #        
@@ -102,17 +121,29 @@ def ParaMesh(size, filename):
     
     def define_ghost_node(mesh, nodes):
          ghost_nodes = [0]*len(nodes)
-         x = []
+         
          for i,j in mesh.cell_data.items():
             if i=="line":
                 x = j.get('gmsh:physical')
+        
+         #print(x)
         
          for i,j in mesh.cells.items():
             if i == "line":
                 for k in range(len(j)):
                     for l in range(2):
-                        ghost_nodes[j[k][l]] = x[k]
-          
+                        if x[k] > 2:
+                            ghost_nodes[j[k][l]] = x[k]
+         for i,j in mesh.cells.items():
+             if i == "line":
+                 for k in range(len(j)):
+                     for l in range(2):
+                         if x[k] <= 2:
+                             ghost_nodes[j[k][l]] = x[k]
+         
+#         for i in range(len(ghost_nodes)):
+#             if ghost_nodes[i] !=0 :
+#                 print(ghost_nodes[i])
     #                
          return ghost_nodes
     
@@ -318,8 +349,8 @@ def ParaMesh(size, filename):
 
 
 if __name__ == "__main__":
-    print("Entrer le fichier du maillage (.gmsh)")
-    filename = input()
+    #print("Entrer le fichier du maillage (.gmsh)")
+    filename = "mesh.msh"#input()
     print("Entrer le nombre de partition souhaitee")
     size = int(input())
     MeshPart(size, filename)

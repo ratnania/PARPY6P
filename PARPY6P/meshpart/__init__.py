@@ -1,3 +1,7 @@
 # -*- coding: UTF-8 -*-
 
-#from .finite_differences import *
+from .LocalStructure import generate_mesh
+from .LocalStructure import halo_value
+from .LocalStructure import ghost_value
+from .LocalStructure import ExplicitScheme
+from .LocalStructure import save_paraview_results

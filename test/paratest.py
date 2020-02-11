@@ -1,4 +1,4 @@
-from TOTOTEST import meshpart
+from PARPY6P import meshpart
 from mpi4py import MPI
 import numpy as np
 import timeit

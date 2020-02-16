@@ -1,3 +1,5 @@
 from PARPY6P import meshpart
 
-meshpart.MeshPartitioning.MeshPart(2, "mesh.msh")
+
+def test_mesh_1():
+    meshpart.MeshPartitioning.MeshPart(2, "mesh.msh")

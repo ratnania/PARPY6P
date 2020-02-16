@@ -22,8 +22,7 @@ before_install:
 # command to install project
 install:
   - python -m pip install .
-  - python -m pip freeze
 
 # command to run tests
 script:
-  - python -m pytest PARPY6P 
+  - python -m pytest gelato 

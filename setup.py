@@ -41,6 +41,7 @@ install_requires = [
     'meshio',
     'mpi4py',
     'metis',
+    'mgmetis',
     #'timeit',
     ]
 

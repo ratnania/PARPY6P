@@ -8,9 +8,12 @@ python:
 
 # Cache directory $HOME/.cache/pip
 cache: pip
-
+  
 # command before installation: install all dependencies and run CMAKE config
 before_install:
+  - sudo apt-get install gfortran
+  - sudo apt-get install openmpi-bin libopenmpi-dev
+  - sudo apt-get install libhdf5-openmpi-dev  
   - python -m pip install --upgrade pip
 
 # command to install project

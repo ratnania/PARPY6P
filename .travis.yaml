@@ -1,5 +1,5 @@
-sudo: required
 language: python
+sudo: required
 
 # which python versions to test
 python:

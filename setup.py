@@ -37,6 +37,7 @@ packages = find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"])
 
 # Dependencies
 install_requires = [
+    'Cython',
     'numpy',
     'meshio',
     'mpi4py',

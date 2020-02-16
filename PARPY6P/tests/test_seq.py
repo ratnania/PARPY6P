@@ -1,4 +1,5 @@
 from PARPY6P import meshpart
+import os
 
 # ... get the mesh directory
 try:
